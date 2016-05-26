@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django channels</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+</head>
+<body>
+    <button id="testButton">Try Django Channels</button>
+</body>
+</html>
+
+<script>
+                    {# Or your server IP address #}
+    socket = new WebSocket("ws://127.0.0.1:8000/");
+    socket.onmessage = function(e) {
+        alert(e.data);
+    }
+    $("#testButton").click(function(){
+        socket.send("Test message");
+    })
+</script>
